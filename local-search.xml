@@ -4,18 +4,12 @@
   
   
   <entry>
-    <title>test</title>
+    <title></title>
     <link href="/2022/02/08/test/"/>
     <url>/2022/02/08/test/</url>
     
-    <content type="html"><![CDATA[<h2 id="深度学习环境搭建"><a href="#深度学习环境搭建" class="headerlink" title="深度学习环境搭建"></a>深度学习环境搭建</h2><p>1<br>2<br>3</p>]]></content>
+    <content type="html"><![CDATA[<p>-–</p><p>title: 深度学习环境搭建</p><p>date: 2022-02-08 00:54:49</p><p>tags: 配置,教程</p><p>categories: 深度学习</p><p>-–</p><h1 id="深度学习环境搭建"><a href="#深度学习环境搭建" class="headerlink" title="深度学习环境搭建"></a>深度学习环境搭建</h1><h2 id="1-安装Nvida驱动以及CUDA"><a href="#1-安装Nvida驱动以及CUDA" class="headerlink" title="1.安装Nvida驱动以及CUDA"></a>1.安装Nvida驱动以及CUDA</h2><h2 id="2-加载cudnn加速包"><a href="#2-加载cudnn加速包" class="headerlink" title="2.加载cudnn加速包"></a>2.加载cudnn加速包</h2><h2 id="3-安装Anaconda环境"><a href="#3-安装Anaconda环境" class="headerlink" title="3.安装Anaconda环境"></a>3.安装Anaconda环境</h2><p>2</p><p>3</p>]]></content>
     
-    
-    <categories>
-      
-      <category>深度学习</category>
-      
-    </categories>
     
     
   </entry>
