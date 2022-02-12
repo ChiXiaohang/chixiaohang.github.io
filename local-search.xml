@@ -8,8 +8,14 @@
     <link href="/2022/02/08/test/"/>
     <url>/2022/02/08/test/</url>
     
-    <content type="html"><![CDATA[<p>测试文档</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="深度学习环境搭建"><a href="#深度学习环境搭建" class="headerlink" title="深度学习环境搭建"></a>深度学习环境搭建</h2><p>1<br>2<br>3</p>]]></content>
     
+    
+    <categories>
+      
+      <category>深度学习</category>
+      
+    </categories>
     
     
   </entry>
