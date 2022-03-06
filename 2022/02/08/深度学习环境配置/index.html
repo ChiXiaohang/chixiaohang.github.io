@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/liandan.jpg">
 <meta property="article:published_time" content="2022-02-08T14:08:53.000Z">
-<meta property="article:modified_time" content="2022-03-06T14:28:58.223Z">
+<meta property="article:modified_time" content="2022-03-06T15:01:30.794Z">
 <meta property="article:author" content="XiaohangChi">
 <meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary_large_image">
@@ -201,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.8k 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      16 分钟
     </span>
   
 
@@ -259,7 +259,31 @@
 <p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306222136907.png" srcset="/img/loading.gif" lazyload></p>
 <p>第一阶段完成！</p>
 <h2 id="2-加载cuDNN加速包"><a href="#2-加载cuDNN加速包" class="headerlink" title="2.加载cuDNN加速包"></a>2.加载cuDNN加速包</h2><h5 id="cudNN下载及配置"><a href="#cudNN下载及配置" class="headerlink" title="cudNN下载及配置"></a>cudNN下载及配置</h5><p>在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN Archive | NVIDIA Developer</a>下载cuDNN深度神经网络的GPU加速库， <strong>注意！</strong>，cuDNN是一个支持包，并不是可执行文件，选择zip格式进行下载。由于我安装的CUDA11.6目前还没有适配版本的cudNN库，我选择接近的11.5版本，建议同上，选择11.5以前的版本，方便版本统一，兼容性和稳定性会更好。<img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306220818216.png" srcset="/img/loading.gif" lazyload>下载完成后，解压压缩包，得到一个名字为cuda的文件夹，然后将里面<code>bin</code>、<code>include</code>和<code>lib</code>文件夹的内容拷贝到CUDA安装目录的相应文件夹中即可（CUDA默认安装目录为：<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6</code>)</p>
-<h2 id="3-安装Anaconda环境"><a href="#3-安装Anaconda环境" class="headerlink" title="3.安装Anaconda环境"></a>3.安装Anaconda环境</h2><h2 id="4-环境测试"><a href="#4-环境测试" class="headerlink" title="4.环境测试"></a>4.环境测试</h2><p>以下代码为CPU与GPU在张量运算下的速度测试：</p>
+<h2 id="3-安装Anaconda环境"><a href="#3-安装Anaconda环境" class="headerlink" title="3.安装Anaconda环境"></a>3.安装Anaconda环境</h2><h5 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h5><p>从<a target="_blank" rel="noopener" href="https://www.anaconda.com/">Anaconda</a>下载安装即可</p>
+<h5 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h5><p>在Anaconda创建虚拟环境有两种方法：</p>
+<ul>
+<li><p>命令行创建</p>
+<p>打开<code>Anaconda Prompt</code>命令窗口，输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">conda create -n DeepLearning python=<span class="hljs-number">3.9</span><br>创建了一个叫做DeepLearning的空间 用的是python3<span class="hljs-number">.9</span>版本作为解释器<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>Anaconda Navigator中创建</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306224310162.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306224403281.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306224455661.png" srcset="/img/loading.gif" lazyload></p>
+<p>设置环境名称，选择python版本，点击创建即可</p>
+</li>
+</ul>
+<p>此时打开<code>Anaconda Prompt</code>输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">activate DeepLearning<br></code></pre></div></td></tr></table></figure>
+
+<p>此时已经切换到了我们刚才创建好的环境</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306225115211.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch"></a>安装pytorch</h5><p>进入<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">PyTorch官网</a>，下载对应版本的pytorch，如果没有对应版本，就下载就接近的版本即可。如图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306230032723.png" srcset="/img/loading.gif" lazyload></p>
+<p>将<code>conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch</code>粘贴到激活的虚拟环境中进行安装即可。</p>
+<h2 id="4-环境测试"><a href="#4-环境测试" class="headerlink" title="4.环境测试"></a>4.环境测试</h2><p>设置jupyterLab解释器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220306230113252.png" srcset="/img/loading.gif" lazyload></p>
+<p>以下代码为CPU与GPU在张量运算下的速度测试：</p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-built_in">print</span>(torch.__version__)        <span class="hljs-comment"># 返回pytorch的版本</span><br><span class="hljs-built_in">print</span>(torch.cuda.is_available())        <span class="hljs-comment"># 当CUDA可用时返回True</span><br><br>a = torch.randn(<span class="hljs-number">10000</span>, <span class="hljs-number">10000</span>)    <span class="hljs-comment"># 返回10000行10000列的张量矩阵</span><br>b = torch.randn(<span class="hljs-number">10000</span>, <span class="hljs-number">5000</span>)     <span class="hljs-comment"># 返回10000行5000列的张量矩阵</span><br><br>t0 = time.time()        <span class="hljs-comment"># 记录时间</span><br>c = torch.matmul(a, b)      <span class="hljs-comment"># 矩阵乘法运算</span><br>t1 = time.time()        <span class="hljs-comment"># 记录时间</span><br><span class="hljs-built_in">print</span>(a.device, t1 - t0)<br><br>device = torch.device(<span class="hljs-string">&#x27;cuda&#x27;</span>)       <span class="hljs-comment"># 用GPU来运行</span><br>a = a.to(device)<br>b = b.to(device)<br><br><span class="hljs-comment"># 初次调用GPU，需要数据传送，因此比较慢</span><br>t0 = time.time()<br>c = torch.matmul(a, b)<br>t2 = time.time()<br><span class="hljs-comment"># 这才是GPU处理数据的真实运行时间，当数据量越大，GPU的优势越明显</span><br>t0 = time.time()<br>c = torch.matmul(a, b)<br>t2 = time.time()<br><span class="hljs-built_in">print</span>(a.device, t2 - t0)<br></code></pre></div></td></tr></table></figure>
 
 <p>输出：</p>
