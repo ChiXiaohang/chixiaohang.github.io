@@ -8,7 +8,7 @@
     <link href="/2022/01/06/Simulink%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/"/>
     <url>/2022/01/06/Simulink%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>在Simulink控制系统建模过程中，通常我们需要查看系统的单位阶跃响应、伯德图、根轨迹等特性，虽然部分特性通过Simulink的功能模块也能够实时的显示，但是远不及代码形式的模型便于操作和查看特性相关的变量。因此，若能够将Simulink模型导入工作空间，既能够利用Simulink模块化建模的优势，又能够结合Matlab脚本文件实现各种中间操作。</p></blockquote><p>该方法适合线性系统与非线性系统，以LADRC电力系统模型为例：</p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307092433295.png" srcset="/img/loading.gif" lazyload></p><p>该系统为线性系统，不包含非线性环节，</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>在Simulink控制系统建模过程中，通常我们需要查看系统的单位阶跃响应、伯德图、根轨迹等特性，虽然部分特性通过Simulink的功能模块也能够实时的显示，但是远不及代码形式的模型便于操作和查看特性相关的变量。因此，若能够将Simulink模型导入工作空间，既能够利用Simulink模块化建模的优势，又能够结合Matlab脚本文件实现各种中间操作。</p></blockquote><p>该方法适合线性系统与非线性系统，以LADRC电力系统模型单位阶跃响应为例：</p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307092433295.png" srcset="/img/loading.gif" lazyload></p><p>该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：</p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307094430446.png" srcset="/img/loading.gif" lazyload></p><p>接下来我们将Simulink模型导入到工作空间</p><p>首先，给Simulink模型的输入添加Input Perturbation点</p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095129203.png" srcset="/img/loading.gif" lazyload></p><p>同样输出处添加Output Measurement点</p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095430662.png" srcset="/img/loading.gif" lazyload></p>]]></content>
     
     
     <categories>
