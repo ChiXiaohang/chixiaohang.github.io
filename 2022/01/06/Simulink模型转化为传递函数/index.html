@@ -200,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      337 字
+      782 字
     </span>
   
 
@@ -209,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      7 分钟
     </span>
   
 
@@ -252,13 +252,27 @@
 </blockquote>
 <p>该方法适合线性系统与非线性系统，以LADRC电力系统模型单位阶跃响应为例：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307092433295.png" srcset="/img/loading.gif" lazyload></p>
-<p>该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307094430446.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示："><a href="#该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：" class="headerlink" title="该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示："></a>该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：</h4><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307094430446.png" srcset="/img/loading.gif" lazyload></p>
 <p>接下来我们将Simulink模型导入到工作空间</p>
 <p>首先，给Simulink模型的输入添加Input Perturbation点</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095129203.png" srcset="/img/loading.gif" lazyload></p>
 <p>同样输出处添加Output Measurement点</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095430662.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后新建脚本程序文件，开始写代码将模型转换为传递函数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">model_name = <span class="hljs-string">&#x27;power_sys&#x27;</span>;  <span class="hljs-comment">%加载simulink模型，即“power_sys.mdl”文件</span><br>model = model_name;  <br><br>io = getlinio(model);      <span class="hljs-comment">%获取模型输入输出信号</span><br>op = operpoint(model);     <span class="hljs-comment">%创建工作点</span><br>open_sys = linearize(model,io,op);   <span class="hljs-comment">%计算系统在该工作点的线性模型，此时得到的是状态方程向量</span><br>[num,den]=tfdata(open_sys,<span class="hljs-string">&#x27;v&#x27;</span>)      <span class="hljs-comment">%将状态方程转换为传递函数的形式</span><br>Trans_function= tf(num,den)<br></code></pre></div></td></tr></table></figure>
+
+<p>得到传递函数：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307100524196.png" srcset="/img/loading.gif" lazyload></p>
+<p>该传递函数的单位阶跃响应为：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image16466188971720.png" srcset="/img/loading.gif" lazyload></p>
+<p>与simulink模型的单位时间阶跃响应一致。</p>
+<h4 id="若系统包含非线性环节，例如："><a href="#若系统包含非线性环节，例如：" class="headerlink" title="若系统包含非线性环节，例如："></a>若系统包含非线性环节，例如：</h4><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307100715384.png" srcset="/img/loading.gif" lazyload></p>
+<p>同样为LADRC电力系统模型，增加了死区的非线性环节，以上述同样步骤得到传递函数：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307101527369.png" srcset="/img/loading.gif" lazyload></p>
+<p>以及同样的单位阶跃输出响应：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307101433444.png" srcset="/img/loading.gif" lazyload></p>
+<p>伯德图同样也可以获取到，且结果一致。</p>
+<img src="/2022/01/06/Simulink%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/image-20220307101807894.png" srcset="/img/loading.gif" lazyload class>
 
             </div>
             <hr>
