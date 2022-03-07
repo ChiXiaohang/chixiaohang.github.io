@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Simulink模型转化为传递函数</title>
+    <link href="/2022/01/06/Simulink%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/"/>
+    <url>/2022/01/06/Simulink%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>在Simulink控制系统建模过程中，通常我们需要查看系统的单位阶跃响应、伯德图、根轨迹等特性，虽然部分特性通过Simulink的功能模块也能够实时的显示，但是远不及代码形式的模型便于操作和查看特性相关的变量。因此，若能够将Simulink模型导入工作空间，既能够利用Simulink模块化建模的优势，又能够结合Matlab脚本文件实现各种中间操作。</p></blockquote><p>以LADRC电力系统模型为例：</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Matlab技巧</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>深度学习环境配置</title>
     <link href="/2021/12/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <url>/2021/12/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
