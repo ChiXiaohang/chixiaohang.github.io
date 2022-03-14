@@ -18,12 +18,12 @@
   <meta name="author" content="池晓航">
   <meta name="keywords" content="">
   
-    <meta name="description" content="引言 在控制系统设计过程中，控制器的参数整定是最为繁琐的步骤之一，且有时找不到适当通用的方法进行调节，只能凭借经验不断改变参数，使输出达到相对理想的控制状态。MATLAB的工具箱可以很好的解决一些简单的控制系统的参数整定问题，大大节省我们的工作时间，提高工作效率。">
+    <meta name="description" content="引言 在控制系统设计过程中，控制器的参数整定是最为繁琐的步骤之一，且有时找不到适当通用的方法进行调节，只能凭借经验不断改变参数，使输出达到相对理想的控制状态。MATLAB的工具箱可以很好的解决一些简单的控制系统的参数整定问题，大大节省我们的工作时间，提高工作效率。  工具 MATLAB 2021b 工具箱(Toolbox) : Control System Tuner 手🙌  模型以串联PID控">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用MATLAB工具箱自动整定控制器参数">
-<meta property="og:url" content="http://example.com/2021/10/06/%E5%88%A9%E7%94%A8MATLAB%E5%B7%A5%E5%85%B7%E7%AE%B1%E8%87%AA%E5%8A%A8%E6%95%B4%E5%AE%9A%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%82%E6%95%B0/index.html">
+<meta property="og:url" content="http://example.com/2021/10/06/MATLAB%E5%B7%A5%E5%85%B7%E7%AE%B1%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%82%E6%95%B0%E8%87%AA%E6%95%B4%E5%AE%9A/index.html">
 <meta property="og:site_name" content="CXH_SPACE">
-<meta property="og:description" content="引言 在控制系统设计过程中，控制器的参数整定是最为繁琐的步骤之一，且有时找不到适当通用的方法进行调节，只能凭借经验不断改变参数，使输出达到相对理想的控制状态。MATLAB的工具箱可以很好的解决一些简单的控制系统的参数整定问题，大大节省我们的工作时间，提高工作效率。">
+<meta property="og:description" content="引言 在控制系统设计过程中，控制器的参数整定是最为繁琐的步骤之一，且有时找不到适当通用的方法进行调节，只能凭借经验不断改变参数，使输出达到相对理想的控制状态。MATLAB的工具箱可以很好的解决一些简单的控制系统的参数整定问题，大大节省我们的工作时间，提高工作效率。  工具 MATLAB 2021b 工具箱(Toolbox) : Control System Tuner 手🙌  模型以串联PID控">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/matlab.jpg">
 <meta property="article:published_time" content="2021-10-06T14:08:53.000Z">
@@ -200,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      131 字
+      584 字
     </span>
   
 
@@ -209,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      5 分钟
     </span>
   
 
@@ -250,6 +250,34 @@
               <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>在控制系统设计过程中，控制器的参数整定是最为繁琐的步骤之一，且有时找不到适当通用的方法进行调节，只能凭借经验不断改变参数，使输出达到相对理想的控制状态。MATLAB的工具箱可以很好的解决一些简单的控制系统的参数整定问题，大大节省我们的工作时间，提高工作效率。</p>
 </blockquote>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>MATLAB 2021b</li>
+<li>工具箱(Toolbox) : Control System Tuner</li>
+<li>手🙌</li>
+</ul>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>以串联PID控制器为例：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314175923757.png" srcset="/img/loading.gif" lazyload></p>
+<p>如图搭建PID仿真模型，其中PID参数随意。</p>
+<h3 id="参数自整定"><a href="#参数自整定" class="headerlink" title="参数自整定"></a>参数自整定</h3><h4 id="设置待自适应调节Simulink模型的IO点，即输入和输出："><a href="#设置待自适应调节Simulink模型的IO点，即输入和输出：" class="headerlink" title="设置待自适应调节Simulink模型的IO点，即输入和输出："></a><strong>设置待自适应调节Simulink模型的IO点，即输入和输出：</strong></h4><img src="/2021/10/06/MATLAB%E5%B7%A5%E5%85%B7%E7%AE%B1%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%82%E6%95%B0%E8%87%AA%E6%95%B4%E5%AE%9A/image-20220314212241535-16472645029509.png" srcset="/img/loading.gif" lazyload class>
+
+<img src="/2021/10/06/MATLAB%E5%B7%A5%E5%85%B7%E7%AE%B1%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%82%E6%95%B0%E8%87%AA%E6%95%B4%E5%AE%9A/image-20220314212648566-164726451388511.png" srcset="/img/loading.gif" lazyload class>
+
+<h4 id="利用Control-System-Tuner进行PID参数自整定"><a href="#利用Control-System-Tuner进行PID参数自整定" class="headerlink" title="利用Control System Tuner进行PID参数自整定"></a><strong>利用Control System Tuner进行PID参数自整定</strong></h4><p>在菜单工具栏选择<code>APP</code>-&gt;<code>控制系统调节器</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314213702954.png" srcset="/img/loading.gif" lazyload></p>
+<p>选择<code>New Plot</code>-&gt;<code>New Step</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314214012317.png" srcset="/img/loading.gif" lazyload></p>
+<p>在弹窗中指定系统的输入和输出信号，点击<code>Plot</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314214709794.png" srcset="/img/loading.gif" lazyload></p>
+<p>单击<code>TUNING </code>-&gt;<code>New Goal</code>-&gt; <code> Tracking of step commands</code>设计自整定后的单位阶跃响应参数，完成后点击<code>Apply</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314215440773.png" srcset="/img/loading.gif" lazyload alt="image-20220314215440773"></p>
+<p>然后，添加需要整定的控制器模块，我们这里选择PID controller.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314220248031.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后，点击<code>Tune</code>,PID控制器的参数就能按照设定的输出响应计算参数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314220839382.png" srcset="/img/loading.gif" lazyload alt="image-20220314220839382"></p>
+<p>返回 <code>CONTROL SYSTEM</code>,点击<code>Update Blocks</code>将计算得到的PID参数传递给Simulink模型中</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314221032044.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="整定效果"><a href="#整定效果" class="headerlink" title="整定效果"></a><strong>整定效果</strong></h4><p>整定完成后，运行Simulink模型，结果如图所示，与上述整定计算一致。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220314221545800.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>
