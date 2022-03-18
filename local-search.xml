@@ -141,5 +141,24 @@
   
   
   
+  <entry>
+    <title>工业项目经验</title>
+    <link href="/2021/06/08/%E5%B7%A5%E4%B8%9A%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/"/>
+    <url>/2021/06/08/%E5%B7%A5%E4%B8%9A%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/</url>
+    
+    <content type="html"><![CDATA[<h3 id="案例一卢氏县政府谷电供暖设备主要负责人"><strong>案例一：卢氏县政府谷电供暖设备（主要负责人）</strong></h3><h4 id="项目简介"><strong>项目简介：</strong></h4><p>主要负责三门峡卢氏县县政府、法院、县委大楼三处地区的供暖设备，根据现场已有配电，梳理电气原理图，并设计控制方案。采用S7-200smart PLC对供暖管网进行控制，主要逻辑为利用夜间谷电时间对储水进行加热，白天利用加热水对办公楼进行供暖。设计MCGS组态界面，可以对管网回路进行调整和主备切换，并且可以直接将耗电数据等导出到外部存储设备，方便进行电力结算。</p><h4 id="项目展示"><strong>项目展示：</strong></h4><p><img src="https://s2.loli.net/2022/03/18/aixuDzbkeHdQjE8.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://s2.loli.net/2022/03/18/giK8uCYp9qGAHTk.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://s2.loli.net/2022/03/18/X8qPptOEWv6Uzo3.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://s2.loli.net/2022/03/18/24KQszBToxZRgyV.png" srcset="/img/loading.gif" lazyload></p><h3 id="案例二-燃气模温机设备电控部分独立完成人"><strong>案例二:</strong> <strong>燃气模温机设备电控部分（独立完成人）</strong></h3><h4 id="项目简介-1">项目简介：</h4><p>根据客户要求，完成对燃气模温机设备的电路设计、控制程序以及上位机设计等任务。内容包括使用信捷PLC对燃气模温机的点火流程进行控制，并设置有管道超温超压、燃气压力、风压等多重保护机制，防止发生意外。应客户要求，上位机还编写有定时开机功能以及分期付款等功能，程序投入使用到目前已有3年时间，期间所有设备均正常运行。</p><h4 id="项目展示-1">项目展示：</h4><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220318114354773.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220318114421012.png" srcset="/img/loading.gif" lazyload></p><h3 id="案例三广东穗丰集团小麦日产1000t生产线主要负责人"><strong>案例三：广东穗丰集团小麦日产1000T</strong>**生产线（主要负责人）</h3><h4 id="项目简介-2">项目简介：</h4><p>主要负责生产线3台S7-1500 PLC 与 2台S7-200smart PLC的组网，以及PLC部分编程工作和完整的Wincc界面开发，Wincc设计过程中加入了很多脚本功能以减轻PLC的任务量，项目本身规模较大。在项目中，还解决了与另外正在投产中B线的联动问题。</p><h4 id="项目展示-2">项目展示：</h4><p><img src="https://s2.loli.net/2022/03/18/WJZY2ExQfGTdw3F.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220318114207925.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220318114226256.png" srcset="/img/loading.gif" lazyload></p><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220318114239053.png" srcset="/img/loading.gif" lazyload></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>深度学习</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
   
 </search>
