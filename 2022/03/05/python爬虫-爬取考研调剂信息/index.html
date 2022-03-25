@@ -31,8 +31,6 @@
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -475,7 +473,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    486
+                    473
                 </div>
                 
 
@@ -505,47 +503,46 @@
                 <blockquote>
 <p>此程序是2022考研调剂数据的爬取程序，爬取对象是小木虫论坛的考研区，为了方便之后的数据管理，爬取到的数据上传到了MongoDB数据库，后续可以将数据导出到Excel中查看。</p>
 </blockquote>
-<h2 id="安装mongodb">安装MongoDB</h2>
-<p>MongoDB 提供了可用于 32 位和 64 位系统的预编译二进制包，你可以从MongoDB官网下载安装，MongoDB 预编译二进制包<a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community">下载地址</a></p>
-<p><img src="https://s2.loli.net/2022/03/15/GlHNoq2XpknW7LK.png"></p>
-<p>安装过程中，勾选<code>"install mongoDB compass"</code>,MongoDB Compass 是一个图形界面管理工具,方便后续的数据管理。</p>
+<h2 id="安装MongoDB"><a href="#安装MongoDB" class="headerlink" title="安装MongoDB"></a>安装MongoDB</h2><p>MongoDB 提供了可用于 32 位和 64 位系统的预编译二进制包，你可以从MongoDB官网下载安装，MongoDB 预编译二进制包<a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community">下载地址</a></p>
+<p><img src="https://s2.loli.net/2022/03/15/GlHNoq2XpknW7LK.png" alt></p>
+<p>安装过程中，勾选<code>&quot;install mongoDB compass&quot;</code>,MongoDB Compass 是一个图形界面管理工具,方便后续的数据管理。</p>
 <p>安装完成后，将MongoDB和MongoDB Compass添加环境变量</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">D:\MongoDB\Server\5.0\bin</span><span class="dt">\</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">D:\mongodb-compass</span><span class="dt">\</span></span></code></pre></div>
-<h2 id="小木虫官网">小木虫官网</h2>
-<p><img src="https://s2.loli.net/2022/03/15/9sX2akfwBuUEtGD.png"></p>
-<h2 id="爬虫核心程序">爬虫核心程序</h2>
-<p>爬虫核心部分，该程序使主要用requests和BeautifulSoup库来完成网页端数据的爬取工作。完整代码见<a target="_blank" rel="noopener" href="https://github.com/ChiXiaohang/2022PEE_SPYDER">Github</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code></pre></div>
-<p>requests用于将链接转化成html语言，而BeautifulSoup则用于查找需要的内容。通过采用<code>soup.select()</code>方法，可以得到所需的内容。 其中关键点在于，对于所需内容的精准定位，通过<code>()</code>内的语句来实现：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> requests.get(url,headers<span class="op">=</span>headers,verify<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 利用BeautifulSoup库，精准定位需要爬取的内容，无需正则表达式</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">&#39;lxml&#39;</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 获取帖子的title信息，包含帖子名称和链接</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    titles <span class="op">=</span> soup.select(<span class="st">&#39;.forum_body_manage .xmc_lp20&#39;</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 获取其他信息</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    colleges <span class="op">=</span> soup.select(<span class="st">&#39;.forum_body_manage .xmc_lp20+ td&#39;</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    majors <span class="op">=</span> soup.select(<span class="st">&#39;.forum_body_manage td:nth-child(3)&#39;</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    nums <span class="op">=</span> soup.select(<span class="st">&#39;.forum_body_manage td:nth-child(4)&#39;</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    times <span class="op">=</span> soup.select(<span class="st">&#39;.forum_body_manage td:nth-child(5)&#39;</span>)</span></code></pre></div>
-<p><img src="https://s2.loli.net/2022/03/15/gk6WVpIdsClAJcZ.png"></p>
-<h2 id="使用方法">使用方法</h2>
-<p>上述配置完成后，运行代码，如图所示：</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/15/KkUY5JzZjCGPByT.png" alt="image-20220315130539300"><figcaption aria-hidden="true">image-20220315130539300</figcaption>
-</figure>
+<pre class="line-numbers language-lang-sh"><code class="language-lang-sh">D:\MongoDB\Server\5.0\bin\
+D:\mongodb-compass\
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="小木虫官网"><a href="#小木虫官网" class="headerlink" title="小木虫官网"></a>小木虫官网</h2><p><img src="https://s2.loli.net/2022/03/15/9sX2akfwBuUEtGD.png" alt></p>
+<h2 id="爬虫核心程序"><a href="#爬虫核心程序" class="headerlink" title="爬虫核心程序"></a>爬虫核心程序</h2><p>爬虫核心部分，该程序使主要用requests和BeautifulSoup库来完成网页端数据的爬取工作。完整代码见<a target="_blank" rel="noopener" href="https://github.com/ChiXiaohang/2022PEE_SPYDER">Github</a>.</p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import requests
+from bs4 import BeautifulSoup
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>requests用于将链接转化成html语言，而BeautifulSoup则用于查找需要的内容。通过采用<code>soup.select()</code>方法，可以得到所需的内容。<br>其中关键点在于，对于所需内容的精准定位，通过<code>()</code>内的语句来实现：</p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">    res = requests.get(url,headers=headers,verify=False)
+    # 利用BeautifulSoup库，精准定位需要爬取的内容，无需正则表达式
+    soup = BeautifulSoup(res.text, 'lxml')
+    # 获取帖子的title信息，包含帖子名称和链接
+    titles = soup.select('.forum_body_manage .xmc_lp20')
+    # 获取其他信息
+    colleges = soup.select('.forum_body_manage .xmc_lp20+ td')
+    majors = soup.select('.forum_body_manage td:nth-child(3)')
+    nums = soup.select('.forum_body_manage td:nth-child(4)')
+    times = soup.select('.forum_body_manage td:nth-child(5)')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://s2.loli.net/2022/03/15/gk6WVpIdsClAJcZ.png" alt></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>上述配置完成后，运行代码，如图所示：</p>
+<p><img src="https://s2.loli.net/2022/03/15/KkUY5JzZjCGPByT.png" alt="image-20220315130539300"></p>
 <p>然后启动MongoDB服务器，在命令终端输入：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mongod</span></span></code></pre></div>
-<p><img src="https://s2.loli.net/2022/03/15/mAXdPuDwTIsOHEW.png"></p>
+<pre class="line-numbers language-lang-sh"><code class="language-lang-sh">mongod
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://s2.loli.net/2022/03/15/mAXdPuDwTIsOHEW.png" alt></p>
 <p>再次在终端输入</p>
-<pre class="shell"><code>mongodbcompass</code></pre>
+<pre class="line-numbers language-lang-shell"><code class="language-lang-shell">mongodbcompass
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>启动MongoDB compass,点击connect</p>
-<p><img src="https://s2.loli.net/2022/03/15/h5XoHGLTAzlRnqY.png"></p>
+<p><img src="https://s2.loli.net/2022/03/15/h5XoHGLTAzlRnqY.png" alt></p>
 <p>在界面左侧即能够看到爬取到的数据已经被上传到数据库中</p>
-<p><img src="https://s2.loli.net/2022/03/15/XIYaBd2nq3rPmvu.png"></p>
+<p><img src="https://s2.loli.net/2022/03/15/XIYaBd2nq3rPmvu.png" alt></p>
 <p>将数据导出到Excel如图所示：</p>
-<p><img src="https://s2.loli.net/2022/03/15/cwVAjkHpXxRMNzu.png"></p>
+<p><img src="https://s2.loli.net/2022/03/15/cwVAjkHpXxRMNzu.png" alt></p>
 
                 
             </div>

@@ -31,8 +31,6 @@
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -471,7 +469,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    466
+                    462
                 </div>
                 
 
@@ -502,34 +500,33 @@
 <p>在Simulink控制系统建模过程中，通常我们需要查看系统的单位阶跃响应、伯德图、根轨迹等特性，虽然部分特性通过Simulink的功能模块也能够实时的显示，但是远不及代码形式的模型便于操作和查看特性相关的变量。因此，若能够将Simulink模型导入工作空间，既能够利用Simulink模块化建模的优势，又能够结合Matlab脚本文件实现各种中间操作。</p>
 </blockquote>
 <p>该方法适合线性系统与非线性系统，以LADRC电力系统模型单位阶跃响应为例：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307092433295.png"></p>
-<h4 id="该系统为线性系统不包含非线性环节给定参数后该系统的单位阶跃响应如下图所示">该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：</h4>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307094430446.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307092433295.png" alt></p>
+<h4 id="该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示："><a href="#该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：" class="headerlink" title="该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示："></a>该系统为线性系统，不包含非线性环节，给定参数后，该系统的单位阶跃响应如下图所示：</h4><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307094430446.png" alt></p>
 <p>接下来我们将Simulink模型导入到工作空间</p>
 <p>首先，给Simulink模型的输入添加Input Perturbation点</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095129203.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095129203.png" alt></p>
 <p>同样输出处添加Output Measurement点</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095430662.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307095430662.png" alt></p>
 <p>然后新建脚本程序文件，开始写代码将模型转换为传递函数</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">model_name</span> <span class="op">=</span> <span class="ss">&#39;power_sys&#39;</span><span class="op">;</span>  <span class="co">%加载simulink模型，即“power_sys.mdl”文件</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">model</span> <span class="op">=</span> <span class="va">model_name</span><span class="op">;</span>  </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">io</span> <span class="op">=</span> <span class="va">getlinio</span>(<span class="va">model</span>)<span class="op">;</span>      <span class="co">%获取模型输入输出信号</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">op</span> <span class="op">=</span> <span class="va">operpoint</span>(<span class="va">model</span>)<span class="op">;</span>     <span class="co">%创建工作点</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">open_sys</span> <span class="op">=</span> <span class="va">linearize</span>(<span class="va">model</span><span class="op">,</span><span class="va">io</span><span class="op">,</span><span class="va">op</span>)<span class="op">;</span>   <span class="co">%计算系统在该工作点的线性模型，此时得到的是状态方程向量</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>[<span class="va">num</span><span class="op">,</span><span class="va">den</span>]<span class="op">=</span><span class="va">tfdata</span>(<span class="va">open_sys</span><span class="op">,</span><span class="ss">&#39;v&#39;</span>)      <span class="co">%将状态方程转换为传递函数的形式</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">Trans_function</span><span class="op">=</span> <span class="va">tf</span>(<span class="va">num</span><span class="op">,</span><span class="va">den</span>)</span></code></pre></div>
+<pre class="line-numbers language-lang-matlab"><code class="language-lang-matlab">model_name = 'power_sys';  %加载simulink模型，即“power_sys.mdl”文件
+model = model_name;  
+
+io = getlinio(model);      %获取模型输入输出信号
+op = operpoint(model);     %创建工作点
+open_sys = linearize(model,io,op);   %计算系统在该工作点的线性模型，此时得到的是状态方程向量
+[num,den]=tfdata(open_sys,'v')      %将状态方程转换为传递函数的形式
+Trans_function= tf(num,den)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>得到传递函数：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307100524196.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307100524196.png" alt></p>
 <p>该传递函数的单位阶跃响应为：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image16466188971720.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image16466188971720.png" alt></p>
 <p>与simulink模型的单位时间阶跃响应一致。</p>
-<h4 id="若系统包含非线性环节例如">若系统包含非线性环节，例如：</h4>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307100715384.png"></p>
+<h4 id="若系统包含非线性环节，例如："><a href="#若系统包含非线性环节，例如：" class="headerlink" title="若系统包含非线性环节，例如："></a>若系统包含非线性环节，例如：</h4><p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307100715384.png" alt></p>
 <p>同样为LADRC电力系统模型，增加了死区的非线性环节，以上述同样步骤得到传递函数：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307101527369.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307101527369.png" alt></p>
 <p>以及同样的单位阶跃输出响应：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307101433444.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ChiXiaohang/Image/image-20220307101433444.png" alt></p>
 <p>伯德图同样也可以获取到，且结果一致。</p>
 <img src="/2022/01/06/Simulink%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/image-20220307101807894.png" class>
 
