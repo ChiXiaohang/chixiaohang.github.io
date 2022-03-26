@@ -33,7 +33,7 @@
       <link href="/2022/03/02/Python%E7%BD%91%E9%A1%B5%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8B%E8%BD%BD/"/>
       <url>/2022/03/02/Python%E7%BD%91%E9%A1%B5%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8B%E8%BD%BD/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>背景：ST意法半导体官方社区一一直有积分兑换的活动，可以免费兑换开发板等礼品(一般需要10000以上积分才可以兑换)。以前也兑换过一块STM32L476G的板子，最近登录账号发现只剩下80积分，但是社区是可以通过下载资源文件增加积分的，下载一次参考手册之类的技术文档大概会增加10点积分，每天的积分增加上限为300积分。作为一个理工学生，自然是不能一个一个点击下载获取积分的，于是就有了下边的操作：</p></blockquote><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=937618217&amp;bvid=BV1iT4y1i7yF&amp;cid=559764593&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div><p>Python自动化测试的具体流程等我有时间再整理贴上来，代码近期会上传Github.</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>背景：ST意法半导体官方社区一一直有积分兑换的活动，可以免费兑换开发板等礼品(一般需要10000以上积分才可以兑换)。以前也兑换过一块STM32L476G的板子，最近登录账号发现只剩下80积分，但是社区是可以通过下载资源文件增加积分的，下载一次参考手册之类的技术文档大概会增加10点积分，每天的积分增加上限为300积分。作为一个理工学生，自然是不能一个一个点击下载获取积分的，于是就有了下边的操作：</p></blockquote><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=937618217&amp;bvid=BV1iT4y1i7yF&amp;cid=559764593&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div><p>Python自动化测试的具体流程等我有时间再整理贴上来，代码近期会上传Github.</p><p><img src="https://s2.loli.net/2022/03/27/iLegrRPqph5xWVk.png"></p>]]></content>
       
       
       <categories>
